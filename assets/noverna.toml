@@ -1,38 +1,18 @@
 [server]
 host = "0.0.0.0"
-port = 8081
+port = 8080
 log_level = "info"
 data_dir = "./data"
 temp_dir = "./tmp"
 
-[cdn]
-enabled = true
-serve_static = true
-static_dir = "./public"
-url_prefix = "/"  # Keine Prefix nötig bei eigener Subdomain
+[uploads]
+max_file_size_mb = 100
+allowed_types = ["image/png", "image/jpeg", "video/mp4", "image/webp", "image/gif", "image/jpg"]
 
-[cdn.cors]
-enabled = true
-allow_origin = "*"
-allow_methods = ["GET", "HEAD"]
-
-[cache]
-enabled = true
-strategy = "memory"
-max_memory_mb = 512
-expire_after_seconds = 86400
-
-[premium]
-enabled = false
-multi_region = false
-edge_nodes = []
-analytics_enabled = false
+[security]
+token_required = true
 api_key = "supersecureapikey"
-
-[advanced]
-gzip_compression = true
-etag_support = true
-http2 = true
+rate_limit_per_minute = 60
 
 [debug]
 enabled = true
